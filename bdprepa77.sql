@@ -11,7 +11,7 @@
  Target Server Version : 80021
  File Encoding         : 65001
 
- Date: 05/12/2021 19:33:42
+ Date: 14/12/2021 13:27:25
 */
 
 SET NAMES utf8mb4;
@@ -40,15 +40,14 @@ INSERT INTO `alumnotrabaja` VALUES (1, 'SI');
 DROP TABLE IF EXISTS `beca`;
 CREATE TABLE `beca`  (
   `idBeca` int NOT NULL AUTO_INCREMENT,
-  `tipoBeca` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `tipoBeca` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`idBeca`) USING BTREE,
   UNIQUE INDEX `key_BecaTipoBeca`(`tipoBeca`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of beca
 -- ----------------------------
-INSERT INTO `beca` VALUES (6, NULL);
 INSERT INTO `beca` VALUES (5, 'BENITO JUAREZ');
 INSERT INTO `beca` VALUES (4, 'EXELENCIA');
 INSERT INTO `beca` VALUES (1, 'NO');
@@ -64,17 +63,17 @@ CREATE TABLE `datosalumno`  (
   `nombreAlumno` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'h--NOMBRE',
   `ape1Alumno` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'g--APELLIDO PATERNO',
   `ape2Alumno` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'f--APELLIDO MATERNO',
-  `fechaBaja` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'c--FECHA DE BAJA',
+  `fechaBaja` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'c--FECHA DE BAJA',
   `numExpediente` char(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'd--NUMERO DE EXPEDIENTE',
   `folioAlumno` char(9) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'e--FOLIO',
   `CURPAlumno` char(18) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'i--CURP',
-  `fechaNacimientoAlumno` date NULL DEFAULT NULL COMMENT 'p-q-r--FECHA DE NACIMIENTO',
+  `fechaNacimientoAlumno` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'p-q-r--FECHA DE NACIMIENTO',
   `correoPersonalAlumno` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 't--CORREO ELECTRÓNICO PERSONAL',
   `correoInstitucionalAlumno` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'u--CORREO ELECTRÓNICO INSTITUCIONAL DEL ALUMNO',
   `referenciaDomicilio` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'ad---REFERENCIA DE DOMICLIO',
   `telefonoFijoAlumno` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'ah--TELEFONO FIJO',
   `telefonoCelularAlumno` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'ag--TELÉFONO CELULAR DEL ALUMNO',
-  `numSeguroSocial` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'al--NÚMERO DE SEGURIDAD SOCIAL',
+  `numSeguroSocial` char(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'al--NÚMERO DE SEGURIDAD SOCIAL',
   `folioBeca` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'ap--FOLIO BECA',
   `aciertosExamenIngresoAlumno` char(3) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'aq--ACIERTOS DE EXAMEN DE INGRESO',
   `promSecundaria` char(3) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'au--PROMEDIO DE SECUNDARIA',
@@ -83,24 +82,23 @@ CREATE TABLE `datosalumno`  (
   `idEdad` int NOT NULL COMMENT 's--EDAD',
   `idGrupo` int NOT NULL COMMENT 'w--GRUPO',
   `idGrado` int NOT NULL COMMENT 'v--GRADO',
-  `idLocalidad` int NOT NULL COMMENT 'aa-DOMICILIO->LOCALIDAD',
   `idAlumnoTrabaja` int NOT NULL COMMENT 'ai-aj--EL ALUMNO TRABAJA',
-  `idTipoSeguroSocial` int NULL DEFAULT NULL COMMENT 'ak--TIPO DE SEGURO DE SALUD',
+  `idTipoSeguroSocial` int NOT NULL COMMENT 'ak--TIPO DE SEGURO DE SALUD',
   `idInscritoAlumnno` int NOT NULL COMMENT 'am-an--INSCRITO',
   `idParentesco` int NOT NULL COMMENT 'bi--DE QUIEN DEPENDE ECONÓMICAMENTE EL ALUMNO',
-  `idBeca` int NULL DEFAULT NULL COMMENT 'ao--BECA',
+  `idBeca` int NOT NULL COMMENT 'ao--BECA',
   `idEntidadFederativa` int NOT NULL COMMENT 'n-o--LUGAR DE NACIMIENTO DEL ALUMNO',
   `CCTEscuela` char(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'as---C.C.T. SECUNDARIA',
-  `numDomicilio` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'aa-y--DOMICILIO->NUMERO',
-  `calleDomicilio` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'aa-x--DOMICILIO->CALLE',
-  `colonia` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'aa-z--DOMICILIO->COLONIA',
-  `CP` varchar(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'aa-ac--DOMICILIO->CODIGO POSTAL',
   `idOcupacion` int NOT NULL COMMENT 'bj--OCUPACIÓN DE QUIEN DEPENDE ECONÓMICAMENTE EL ALUMNO',
   `folioCURPAlumno` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'j--FOLIO CURP DE ALUMNO',
   `RFCAlumno` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'k--RFC',
-  `municipioNacimientoAlumno` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `fechaInscripcionAlumno` date NULL DEFAULT NULL,
+  `municipioNacimientoAlumno` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`matricula`) USING BTREE,
+  UNIQUE INDEX `key_DatosAlum_numExpediente`(`numExpediente`) USING BTREE,
+  UNIQUE INDEX `key_DatosAlum_FolioAlumno`(`folioAlumno`) USING BTREE,
+  UNIQUE INDEX `key_DatosAlum_CURPAlumno`(`CURPAlumno`) USING BTREE,
+  UNIQUE INDEX `key_DatosAlum_numSeguroSocial`(`numSeguroSocial`) USING BTREE,
+  UNIQUE INDEX `key_DatosAlum_FolioBeca`(`folioBeca`) USING BTREE,
   INDEX `fk_SexoDatosAlumno_idSexo`(`idSexo`) USING BTREE,
   INDEX `fk_EdadDatosAlumno_idEdad`(`idEdad`) USING BTREE,
   INDEX `fk_GradoDatosAlumno_idGrado`(`idGrado`) USING BTREE,
@@ -112,13 +110,7 @@ CREATE TABLE `datosalumno`  (
   INDEX `fk_BecaDatosAlumno_idBeca`(`idBeca`) USING BTREE,
   INDEX `fk_EscuelaDatosAlumnos_CCTEscuela`(`CCTEscuela`) USING BTREE,
   INDEX `fk_MunicipioDatosAlumnos_idMunicipio`(`idEntidadFederativa`) USING BTREE,
-  INDEX `fk_LocalidadDatosAlumno_idLocalidad`(`idLocalidad`) USING BTREE,
   INDEX `fk_Ocupacion`(`idOcupacion`) USING BTREE,
-  INDEX `key_DatosAlum_numExpediente`(`numExpediente`) USING BTREE,
-  INDEX `key_DatosAlum_FolioAlumno`(`folioAlumno`) USING BTREE,
-  INDEX `key_DatosAlum_CURPAlumno`(`CURPAlumno`) USING BTREE,
-  INDEX `key_DatosAlum_numSeguroSocial`(`numSeguroSocial`) USING BTREE,
-  INDEX `key_DatosAlum_FolioBeca`(`folioBeca`) USING BTREE,
   CONSTRAINT `fk_AlumnoTrabajaDatosAlumno_idAlumnoTrabaja` FOREIGN KEY (`idAlumnoTrabaja`) REFERENCES `alumnotrabaja` (`idAlumnoTrabaja`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `fk_BecaDatosAlumno_idBeca` FOREIGN KEY (`idBeca`) REFERENCES `beca` (`idBeca`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `fk_EdadDatosAlumno_idEdad` FOREIGN KEY (`idEdad`) REFERENCES `edad` (`idEdad`) ON DELETE RESTRICT ON UPDATE CASCADE,
@@ -126,7 +118,6 @@ CREATE TABLE `datosalumno`  (
   CONSTRAINT `fk_GradoDatosAlumno_idGrado` FOREIGN KEY (`idGrado`) REFERENCES `grado` (`idGrado`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `fk_GrupoDatosAlumno_idGrupo` FOREIGN KEY (`idGrupo`) REFERENCES `grupo` (`idGrupo`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `fk_InscritoAlumnoDatosAlumno_idInscritoAlumno` FOREIGN KEY (`idInscritoAlumnno`) REFERENCES `inscritoalumno` (`idInscrito`) ON DELETE RESTRICT ON UPDATE CASCADE,
-  CONSTRAINT `fk_LocalidadDatosAlumno_idLocalidad` FOREIGN KEY (`idLocalidad`) REFERENCES `localidad` (`idLocalidad`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `fk_MunicipioDatosAlumnos_idEntidadFederativa` FOREIGN KEY (`idEntidadFederativa`) REFERENCES `entidadfederativa` (`idEntidadFederativa`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `fk_OcupacionDatosDocente_idOcupacion` FOREIGN KEY (`idOcupacion`) REFERENCES `ocupacion` (`idOcupacion`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `fk_ParentescoDatosAlumno_idParentesco` FOREIGN KEY (`idParentesco`) REFERENCES `parentesco` (`idParentesco`) ON DELETE RESTRICT ON UPDATE CASCADE,
@@ -137,20 +128,6 @@ CREATE TABLE `datosalumno`  (
 -- ----------------------------
 -- Records of datosalumno
 -- ----------------------------
-INSERT INTO `datosalumno` VALUES ('12345678665', 'JESUS', 'MONTIEL', 'ORNELAS', '2021-07-29', '2223', '232323423', 'VAMM000510MMCHJRA7', '2021-07-13', '', '', 'CERCA DE LA ESCUELA ', '', '', '23456789765', '3456789', '222', '7', 'JORGE', 1, 7, 3, 1, 9, 1, 2, 1, 4, 4, 3, '15EES0643J', '44', 'qwe23', 'AGUA CALIENTE', '54643', 5, 'VAMNSJUDI4', 'JAMR000414HHJO8', 'EKLJTJI', '2021-07-13');
-INSERT INTO `datosalumno` VALUES ('20182306666', 'MATIAS', 'FRANCO', 'SANTANA', '2021-08-07', '0009', '234571788', 'CGVJFEJKDSÑOCJ890R', '2021-07-13', '', '', 'CERCA DE LA ESCUELA ', '', '', '23456', '45678', '87', '8', 'JORGE', 1, 3, 3, 2, 10, 2, 2, 1, 7, 4, 10, '15EES0163B', 'SIN NUMERO', 'SIN CALLE', 'LAS LOMAS', '54645', 8, 'CGVJFEJKDS', 'CGVJFEJKDSÑOCJ8', 'TULA', '2021-07-13');
-INSERT INTO `datosalumno` VALUES ('20182308333', 'JUDAS', 'TORRECILLAS', 'MELENDEZ', '2023-05-16', '0008', '000000008', 'VAMM000510MMCHJR66', '2020-11-01', '', '', 'CERCA DEL POZO', '', '', '', '', '99', '8', 'MAURICIO GONZALEZ ', 2, 5, 2, 2, 5, 2, 6, 1, 4, 1, 15, '15EES0643J', '1121212121', 'SIN CALLE', 'OJO DE AGUA', '543675', 7, 'VAMM000510', 'VAMM000510MM666', 'TULA DE ALLENDE', '2021-07-12');
-INSERT INTO `datosalumno` VALUES ('20182308432', 'MELISSA', 'DE LA O', 'JUAREZ', '2019-11-27', '8365', '385729785', 'SJKGIUWQ642367I34Y', '2003-06-17', '', '', 'CERCA DE LA PALMERA', '837528735', '7365739236', '', '', '78', '8.7', 'JUAN DE LA O MATINEZ', 2, 4, 2, 3, 15, 1, 6, 1, 3, 1, 15, '15EES0163B', 'SIN NUMERO', 'SIN CALLE', 'DENHI', '54245', 8, 'WHUWH74387', 'JDHWUHR837583', 'CHAPINGO', '2019-07-22');
-INSERT INTO `datosalumno` VALUES ('2018230872', 'RODRI', 'JAVIER', 'ORNELAS', '2021-07-06', '0004', '000000004', 'JAMR000414HHJOL02', '2000-04-14', '', '', 'MILPAS Y LA AUTOPISTA', '23554664641', '5599933524', '', '111111111111111', '60', '7.7', 'REYNA MONTIEL', 1, 10, 4, 2, 38, 1, 6, 1, 7, 5, 13, '15ETV0094B', 'SIN NUMERO', 'SIN CALLE', 'AGUA FRIA', '54380', 4, '2222222222', 'JAMR000414HHJOL', 'TULA', '2021-07-13');
-INSERT INTO `datosalumno` VALUES ('20182308721', 'MARIAN', 'JAVIER', 'VAZQUEZ', '2021-07-13', '0005', '000000005', 'CGVJFEJKDSÑOCJ1111', '2001-10-24', '', '', 'CERCA DEL POZO DE AGUA', '', '', '111', '222222222222222', '44', '7', 'VICTOR HUGO', 1, 5, 1, 1, 15, 2, 6, 1, 6, 1, 15, '15DES0310W', 'SIN NUMERO', 'SIN CALLE', 'AGUA CALIENTE', '54381', 3, 'AGETYWHSI1', 'VAERRGSVY888AN1', 'CHAPA', '2021-07-13');
-INSERT INTO `datosalumno` VALUES ('201823192', 'MARIAN', 'VAZQUEZ', 'MONTIEL', '2021-07-07', '6666', '777', 'VAMM000510MMCZNTT8', '2000-05-10', 'MARIAN@HOTMAIL.COM', 'VAZQUEZMARIAN@PREPA77', 'CERCA DEL POZO DE AGUA', '2355466464', '4567298516', '12378267888', '444', '100', '9', 'REYNA MONTIEL', 2, 7, 2, 2, 15, 2, 2, 1, 7, 4, 15, '15DES0310W', 'SIN NUMERO', 'SIN CALLE', 'AGUA FRIA', '54380', 8, 'VAE35AG666', 'VAERRGSVY888ANN', 'CHAPA', '2021-06-28');
-INSERT INTO `datosalumno` VALUES ('201823320', 'VICTOR HUGO', 'VALDEZ', 'ROBLES', '0000-00-00', '0001', '1212', 'VARV991101HCMLBC04', '1999-11-01', 'valdez@hotmail.com', 'valdez@tesji.com', 'SIN REFERENCIA', '552363542321', '5586034734', '32442331312', '123423122334222', '100', '9', 'VIRGINIA ROBLES', 1, 2, 3, 1, 8, 1, 3, 1, 7, 4, 15, '15EES0711Q', 'S/N', 'SIN CALLE', 'LA LOMA', '54385', 8, '1234567891', 'VARV991101HCML', 'SAN FELIPE', '2018-08-07');
-INSERT INTO `datosalumno` VALUES ('201823674', 'MARIA', 'GONZALEZ', 'APARICIO', '2021-07-09', '7653', '74374298', 'JAMR000414HHJOL736', '2005-06-13', '', '', 'LADO DEL SUPER DON NICO', '7365823746', '6726457287', '6745564', '84398256928', '74', '9.0', 'MAURICIO GONZALEZ LUCAS', 2, 2, 2, 2, 13, 1, 4, 1, 7, 2, 15, '15DES0310W', 'SIN NUMERO', 'SIN CALLE', 'OJO DE AGUA', '54256', 5, 'UEE8392283', 'JFHUEH3932283', 'TEUPAN', '2021-07-01');
-INSERT INTO `datosalumno` VALUES ('201823777', 'JORGE ALFREDO', 'TORRECILLAS', 'MELENDEZ', '0000-00-00', '5643', '65438', 'TOMJ000826HDFRLRA1', '2000-08-26', 'jorgetorrecillas4@gmail.com', 'jorgetorrecillas4@gmail.com', '', '', '5577983693', '55477656756', '', '78', '9', 'DULCE CONCEPCION MELENDEZ CASTILLO', 1, 2, 1, 1, 27, 2, 1, 2, 6, 1, 15, '15EES0643J', 'S/N', 'revolucion', 'FRESNO', '54678', 8, '764683', 'TOMJ00826', 'JILOTEPEC', '2019-08-12');
-INSERT INTO `datosalumno` VALUES ('32323232323', 'MARIA', 'SARMIENTO', 'APARICIO', '2021-07-21', '3232', '323232323', 'VAMNSJUDIWO2E7UH09', '2021-07-13', '', '', 'CERCA DE LA ESCUELA ', '', '', '', '', '99', '7.7', '', 1, 5, 1, 1, 23, 2, 6, 2, 5, 1, 13, '15EES0643J', 'SIN NUMERO', 'SIN CALLE', 'LAS LOMAS', '54367', 5, 'VAMNSJUDI1', 'CGVJFEJKDSÑOCJ9', 'HSBDHSBDSHD', '2021-07-13');
-INSERT INTO `datosalumno` VALUES ('34567896362', 'FELIPA', 'SARMIENTO', 'WALTER', '2021-07-13', '3456', '987654321', 'VAMNSJUDIWO2E7UHH3', '2000-12-12', '', '', 'MILPAS Y LA AUTOPIST', '', '', '23456789098', '876532098765434', '100', '6', 'MARIAN ELIZABETH VAZQUEZ MONTIEL', 1, 7, 2, 2, 17, 1, 2, 1, 1, 4, 9, '15EES0163B', 'SIN NUMERO', 'SIN CALLE', 'AGUA FRIA', '543678', 8, 'VAMNSJUDIW', 'VAMNSJUDIWO2E7U', 'NO SE PONLE LO QUE QUIERAS', '2021-07-13');
-INSERT INTO `datosalumno` VALUES ('44643435463', 'JESUS', 'JAVIER', 'ORNELAS', '2021-07-11', '4635', '352456322', 'VAMNSJUDIWO2E7U222', '2000-06-28', '', '', 'NO HAY', '', '', '', '', '100', '9', 'MAURICIO GONZALEZ LUCAS', 1, 4, 3, 2, 11, 1, 6, 1, 5, 1, 12, '15EES0643J', 'SIN NUMERO', 'SIN CALLE', 'AGUA CALIENTE', '546451', 5, 'VAMNSJUDI3', 'VAMNSJUDIWO2E71', 'TEUPAN', '2021-07-12');
-INSERT INTO `datosalumno` VALUES ('55555555555', 'JESUS', 'SARMIENTO', 'ORNELAS', '', '5555', '555555555', 'JAMR000414HHJOL025', '2000-03-01', '', '', 'CERCA DEL POZO DE AGUA', '', '', '', '', '74', '8', 'MAURICIO GONZALEZ LUCAS', 1, 7, 2, 1, 12, 2, 6, 1, 6, 1, 10, '15EES0163B', 'SIN NUMERO', 'SIN CALLE', 'AGUA CALIENTE', '543678', 5, 'VAMNSJUDI9', 'JAMR000414HHJO0', 'fgdgfudfus', '2021-07-06');
 
 -- ----------------------------
 -- Table structure for datosalumno_semestre1
@@ -185,17 +162,6 @@ CREATE TABLE `datosalumno_semestre1`  (
 -- ----------------------------
 -- Records of datosalumno_semestre1
 -- ----------------------------
-INSERT INTO `datosalumno_semestre1` VALUES (1, 9, '201823192', '0', '0', '0', 9, 8, 9, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 8.6);
-INSERT INTO `datosalumno_semestre1` VALUES (2, 1, '20182308432', '0', '0', '0', 9, 9, 9, 0, '', 0, '', 0, '', 0, '', 9);
-INSERT INTO `datosalumno_semestre1` VALUES (3, 2, '20182308432', '0', '0', '0', 8, 8, 8, 0, '', 0, '', 0, '', 0, '', 8);
-INSERT INTO `datosalumno_semestre1` VALUES (4, 3, '20182308432', '0', '0', '0', 9, 8, 7, 0, '', 0, '', 0, '', 0, '', 8);
-INSERT INTO `datosalumno_semestre1` VALUES (5, 4, '20182308432', '0', '0', '0', 7, 7, 8, 0, '', 0, '', 0, '', 0, '', 7.33333);
-INSERT INTO `datosalumno_semestre1` VALUES (6, 5, '20182308432', '0', '0', '0', 7, 7, 6, 0, '', 0, '', 0, '', 0, '', 6.66667);
-INSERT INTO `datosalumno_semestre1` VALUES (7, 6, '20182308432', '0', '1', '1', 8, 9, 9, 0, '', 0, '', 0, '', 0, '', 8.66667);
-INSERT INTO `datosalumno_semestre1` VALUES (8, 7, '20182308432', '1', '0', '1', 8, 8, 9, 0, '', 0, '', 0, '', 0, '', 8.33333);
-INSERT INTO `datosalumno_semestre1` VALUES (9, 8, '20182308432', '22', '1', '1', 9, 8, 9, 0, '', 0, '', 0, '', 0, '', 8.66667);
-INSERT INTO `datosalumno_semestre1` VALUES (10, 9, '20182308432', '1', '1', '1', 9, 8, 9, 0, '', 0, '', 0, '', 0, '', 8.66667);
-INSERT INTO `datosalumno_semestre1` VALUES (11, 10, '20182308432', '0', '1', '1', 7, 8, 9, 0, '', 0, '', 0, '', 0, '', 8);
 
 -- ----------------------------
 -- Table structure for datosalumno_semestre2
@@ -230,7 +196,6 @@ CREATE TABLE `datosalumno_semestre2`  (
 -- ----------------------------
 -- Records of datosalumno_semestre2
 -- ----------------------------
-INSERT INTO `datosalumno_semestre2` VALUES (1, 1, '20182308432', '0', '0', '0', 9, 9, 9, 0, NULL, 0, NULL, 0, NULL, 0, NULL, 9);
 
 -- ----------------------------
 -- Table structure for datosalumno_semestre3
@@ -383,7 +348,7 @@ CREATE TABLE `datosdocente_doctorado`  (
   INDEX `fk_DatosDocentesDoctorado_CURPDatosDocentes`(`CURPDatosDocentes`) USING BTREE,
   CONSTRAINT `fk_DatosDocentesDoctorado_CURPDatosDocentes` FOREIGN KEY (`CURPDatosDocentes`) REFERENCES `datosdocentes` (`CURPDocente`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `fk_DatosDocentesDoctorado_idDoctorado` FOREIGN KEY (`idDoctorado`) REFERENCES `doctorado` (`idDoctorado`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of datosdocente_doctorado
@@ -397,19 +362,17 @@ CREATE TABLE `datosdocente_especializacion`  (
   `idDatosDocenteEspecializacion` int NOT NULL AUTO_INCREMENT,
   `CURPDatosDocentes` varchar(18) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `idEspecializacion` int NOT NULL,
-  `fechaEgresoEspecializacion` varbinary(10) NULL DEFAULT NULL,
+  `fechaEgresoEspecializacion` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`idDatosDocenteEspecializacion`) USING BTREE,
   INDEX `fk_DatosDocentesEspecializacion_idLicenciatura`(`idEspecializacion`) USING BTREE,
   INDEX `fk_DatosDocentesEspecializacion_CURPDatosDocentes`(`CURPDatosDocentes`) USING BTREE,
   CONSTRAINT `fk_DatosDocentesEspecializacion_CURPDatosDocentes` FOREIGN KEY (`CURPDatosDocentes`) REFERENCES `datosdocentes` (`CURPDocente`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `fk_DatosDocentesEspecializacion_idLicenciatura` FOREIGN KEY (`idEspecializacion`) REFERENCES `especializacion` (`idEspecializacion`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of datosdocente_especializacion
 -- ----------------------------
-INSERT INTO `datosdocente_especializacion` VALUES (9, 'JUDGFIUE76573', 1, 0x323031312D30362D3038);
-INSERT INTO `datosdocente_especializacion` VALUES (10, 'HFIEUFHJ7HFUEB76', 1, 0x323030352D30332D3037);
 
 -- ----------------------------
 -- Table structure for datosdocente_licenciatura
@@ -422,21 +385,17 @@ CREATE TABLE `datosdocente_licenciatura`  (
   `idLicenciatura` int NOT NULL,
   `escuelaEgresionLicenciatura` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `noCedulaProfesional` varchar(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `fechaEscuelaEgresion` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `fechaEscuelaEgresion` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`idDatosDocenteLicenciatura`) USING BTREE,
   INDEX `fk_DatosDocentesLicenciatura_idLicenciatura`(`idLicenciatura`) USING BTREE,
   INDEX `fk_DatosDocentesLicenciatura_CURPDatosDocentes`(`CURPDatosDocente`) USING BTREE,
   CONSTRAINT `fk_DatosDocentesLicenciatura_CURPDatosDocentes` FOREIGN KEY (`CURPDatosDocente`) REFERENCES `datosdocentes` (`CURPDocente`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `fk_DatosDocentesLicenciatura_idLicenciatura` FOREIGN KEY (`idLicenciatura`) REFERENCES `licenciatura` (`idLicenciatura`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of datosdocente_licenciatura
 -- ----------------------------
-INSERT INTO `datosdocente_licenciatura` VALUES (10, 'TITULADO', 'JUDGFIUE76573', 1, 'PREPA77', '', '');
-INSERT INTO `datosdocente_licenciatura` VALUES (11, 'TITULADO', 'HFIEUFHJ7HFUEB76', 2, 'ESCUELA ANEXA A LA NORMAL', '132435', '2000-08-16');
-INSERT INTO `datosdocente_licenciatura` VALUES (12, 'Titulado', 'VAMOISTEY3ENQ2344D', 1, 'TESJI', '637892323', '');
-INSERT INTO `datosdocente_licenciatura` VALUES (15, 'TITULADO', 'HFIEUFHJ7HFUEB76', 2, 'ESCUELA ANEXA A LA NORMAL', '132435', '2000-08-16');
 
 -- ----------------------------
 -- Table structure for datosdocente_maestria
@@ -458,8 +417,6 @@ CREATE TABLE `datosdocente_maestria`  (
 -- ----------------------------
 -- Records of datosdocente_maestria
 -- ----------------------------
-INSERT INTO `datosdocente_maestria` VALUES (9, 'Pasante', 'JUDGFIUE76573', 1, '');
-INSERT INTO `datosdocente_maestria` VALUES (10, 'Titulado', 'HFIEUFHJ7HFUEB76', 1, '');
 
 -- ----------------------------
 -- Table structure for datosdocentes
@@ -470,26 +427,21 @@ CREATE TABLE `datosdocentes`  (
   `nombreDocente` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `ape1Docente` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `ape2Docente` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `fechaNacimientoDocente` date NOT NULL,
+  `fechaNacimientoDocente` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `RFCDocente` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `claveISSEMYM` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `telefonoCelular` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `telefonoFijo` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `fechaDeIngresoSEducativoEstatal` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `fechaDeIngresoAlNivel` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `fechaDeBaseAlNivel` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `fechaDeIngresoAlCargo` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `fechaDeIngresoInstitucion` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `fechaDeIngresoCarreraDocente` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `fechaDeIngresoSEducativoEstatal` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `fechaDeIngresoAlNivel` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `fechaDeBaseAlNivel` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `fechaDeIngresoAlCargo` varbinary(20) NULL DEFAULT NULL,
+  `fechaDeIngresoInstitucion` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `fechaDeIngresoCarreraDocente` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `puntajeEscalafonario` varchar(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `CCTEscuela` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `idNivelLaboral` int NOT NULL,
   `idPuestoInstitucional` int NOT NULL,
-  `idLocalidad` int NOT NULL,
-  `calleDocente` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `numeroDocente` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `coloniaDocente` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `CPDocente` varchar(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`CURPDocente`) USING BTREE,
   UNIQUE INDEX `key_DatosDocente_RFCDocente`(`RFCDocente`) USING BTREE,
   UNIQUE INDEX `key_DatosDocente_telefonoCelular`(`telefonoCelular`) USING BTREE,
@@ -497,20 +449,14 @@ CREATE TABLE `datosdocentes`  (
   INDEX `fk_EscuelaDatosDocente_CCTEscuela`(`CCTEscuela`) USING BTREE,
   INDEX `fk_NivelLaboralDatosDocente_idNivelLaboral`(`idNivelLaboral`) USING BTREE,
   INDEX `fk_PuestoInstitucionalDatosDocente_idPuestoInstitucional`(`idPuestoInstitucional`) USING BTREE,
-  INDEX `kf_LocalidadDatosDocente_idLocalidad`(`idLocalidad`) USING BTREE,
   CONSTRAINT `fk_EscuelaDatosDocente_CCTEscuela` FOREIGN KEY (`CCTEscuela`) REFERENCES `escuela` (`CCTEscuela`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `fk_NivelLaboralDatosDocente_idNivelLaboral` FOREIGN KEY (`idNivelLaboral`) REFERENCES `nivellaboral` (`idNivelLaboral`) ON DELETE RESTRICT ON UPDATE CASCADE,
-  CONSTRAINT `fk_PuestoInstitucionalDatosDocente_idPuestoInstitucional` FOREIGN KEY (`idPuestoInstitucional`) REFERENCES `puestoinstitucional` (`idPuestoInstitucional`) ON DELETE RESTRICT ON UPDATE CASCADE,
-  CONSTRAINT `kf_LocalidadDatosDocente_idLocalidad` FOREIGN KEY (`idLocalidad`) REFERENCES `localidad` (`idLocalidad`) ON DELETE RESTRICT ON UPDATE CASCADE
+  CONSTRAINT `fk_PuestoInstitucionalDatosDocente_idPuestoInstitucional` FOREIGN KEY (`idPuestoInstitucional`) REFERENCES `puestoinstitucional` (`idPuestoInstitucional`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of datosdocentes
 -- ----------------------------
-INSERT INTO `datosdocentes` VALUES ('HFIEUFHJ7HFUEB76', 'JORGE', 'MARTINEZ', 'GONZALES ', '1978-08-13', 'HJDHFUE7', '857VHHR873', '5576348723', '5576324323', '2001-12-23', '2003-03-04', '2004-09-05', '2004-04-20', '2005-03-15', '2005-04-11', '3113', '15EES0643J', 3, 5, 20, 'LOMAS ARCOIRIS', 'S/N', 'TEMPLO', '54673');
-INSERT INTO `datosdocentes` VALUES ('JUDGFIUE76573', 'MARIA', 'CAMACHO', 'MARTINEZ', '1998-09-23', 'JGFU756HFI', 'HFGYIEY746', '5546387434', '', '2012-08-23', '2011-11-12', '2015-02-12', '2016-05-23', '2016-05-23', '2015-07-07', '342', '15EBH0164Y', 2, 5, 9, 'LOPEZ MATEOS', 'S/N', 'REHENES', '54763');
-INSERT INTO `datosdocentes` VALUES ('VAMOISTEY3ENQ2344D', 'MARCELO', 'PEREZ', 'MARTINEZ ', '2021-05-06', 'JGFU756HF3', 'HFGYIEY742', '5546387433', '13452678190', '2021-07-07', '2021-04-01', '2021-03-11', '2021-03-12', '2021-04-14', '2021-03-29', '1234', '15EBH0164Y', 2, 5, 1, 'LAS LOMAS', '234', 'SAN PEDRO', '54380');
-INSERT INTO `datosdocentes` VALUES ('VASDMDEJNYUGWBH357', 'ANA', 'SOLIZ', 'LOPEZ ', '1999-06-29', '1234567890', 'FFSD3R6R74', '5637892072', '', '', '', '', '', '', '', '789', '15EBH0164Y', 3, 2, 11, 'SIN CALLE', 'SIN NUMERO', 'LAS PEÑAS', '54366');
 
 -- ----------------------------
 -- Table structure for datosdocentes_diplomado
@@ -520,19 +466,17 @@ CREATE TABLE `datosdocentes_diplomado`  (
   `idDatosDocenteDiplomado` int NOT NULL AUTO_INCREMENT,
   `CURPDatosDocente` varchar(18) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `idDiplomado` int NOT NULL,
-  `fechaEgresoDiplomado` varbinary(10) NULL DEFAULT NULL,
+  `fechaEgresoDiplomado` varbinary(20) NULL DEFAULT NULL,
   PRIMARY KEY (`idDatosDocenteDiplomado`) USING BTREE,
   INDEX `fk_DatosDocentesDiplomado_idDiplomado`(`idDiplomado`) USING BTREE,
   INDEX `fk_DatosDocentesDiplomado_CURPDatosDocentes`(`CURPDatosDocente`) USING BTREE,
   CONSTRAINT `fk_DatosDocentesDiplomado_CURPDatosDocentes` FOREIGN KEY (`CURPDatosDocente`) REFERENCES `datosdocentes` (`CURPDocente`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `fk_DatosDocentesDiplomado_idDiplomado` FOREIGN KEY (`idDiplomado`) REFERENCES `diplomado` (`idDiplomado`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of datosdocentes_diplomado
 -- ----------------------------
-INSERT INTO `datosdocentes_diplomado` VALUES (5, 'JUDGFIUE76573', 1, 0x323031372D30382D3037);
-INSERT INTO `datosdocentes_diplomado` VALUES (6, 'HFIEUFHJ7HFUEB76', 1, '');
 
 -- ----------------------------
 -- Table structure for diplomado
@@ -605,6 +549,52 @@ CREATE TABLE `documentodocente`  (
 
 -- ----------------------------
 -- Records of documentodocente
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for domicilioalumno
+-- ----------------------------
+DROP TABLE IF EXISTS `domicilioalumno`;
+CREATE TABLE `domicilioalumno`  (
+  `idDomicilioAlumno` int NOT NULL AUTO_INCREMENT,
+  `matricula` char(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `idLocalidad` int NOT NULL,
+  `numDomicilioAlumno` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `calleDomicilioAlumno` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `coloniaAlumno` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `cpAlumno` varchar(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`idDomicilioAlumno`) USING BTREE,
+  INDEX `fk_LocalidadDomicilio_IdLocalidad`(`idLocalidad`) USING BTREE,
+  INDEX `fk_DatosAlumnoDomicilio_matricula`(`matricula`) USING BTREE,
+  CONSTRAINT `fk_DatosAlumnoDomicilio_matricula` FOREIGN KEY (`matricula`) REFERENCES `datosalumno` (`matricula`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT `fk_LocalidadDomicilio_IdLocalidad` FOREIGN KEY (`idLocalidad`) REFERENCES `localidad` (`idLocalidad`) ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of domicilioalumno
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for domiciliodocente
+-- ----------------------------
+DROP TABLE IF EXISTS `domiciliodocente`;
+CREATE TABLE `domiciliodocente`  (
+  `idDomicilioDocente` int NOT NULL,
+  `CurpDocente` varchar(18) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `idLocalidad` int NOT NULL,
+  `numDomicilioDocente` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `calleDomicilioDocente` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `coloniaDocente` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `cpDocente` varchar(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`idDomicilioDocente`) USING BTREE,
+  INDEX `fk_LocalidadDomicilioDocente_idLocalidad`(`idLocalidad`) USING BTREE,
+  INDEX `fk_DatosDocentesDomicilio_CurpDocente`(`CurpDocente`) USING BTREE,
+  CONSTRAINT `fk_DatosDocentesDomicilio_CurpDocente` FOREIGN KEY (`CurpDocente`) REFERENCES `datosdocentes` (`CURPDocente`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT `fk_LocalidadDomicilioDocente_idLocalidad` FOREIGN KEY (`idLocalidad`) REFERENCES `localidad` (`idLocalidad`) ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of domiciliodocente
 -- ----------------------------
 
 -- ----------------------------
@@ -738,16 +728,11 @@ CREATE TABLE `escuelaslabora`  (
   CONSTRAINT `fk_DatosDocenteEscuelasLabora_CURPDocente` FOREIGN KEY (`CURPDocente`) REFERENCES `datosdocentes` (`CURPDocente`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `fk_DatosPuestoInsEscuelasLabora_idPuestoInstitucional` FOREIGN KEY (`idPuestoInstitucional`) REFERENCES `puestoinstitucional` (`idPuestoInstitucional`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `fk_EscuelaEscuelasLabora_CCTEscuela` FOREIGN KEY (`CCTEscuela`) REFERENCES `escuela` (`CCTEscuela`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of escuelaslabora
 -- ----------------------------
-INSERT INTO `escuelaslabora` VALUES (13, 'JUDGFIUE76573', '15EBH0164Y', 1, '23');
-INSERT INTO `escuelaslabora` VALUES (14, 'JUDGFIUE76573', '15EES0643J', 3, '12');
-INSERT INTO `escuelaslabora` VALUES (15, 'HFIEUFHJ7HFUEB76', '15EBH0164Y', 4, '13');
-INSERT INTO `escuelaslabora` VALUES (16, 'VAMOISTEY3ENQ2344D', '15ETV0094B', 1, '');
-INSERT INTO `escuelaslabora` VALUES (17, 'VAMOISTEY3ENQ2344D', '15DES0310W', 2, '9');
 
 -- ----------------------------
 -- Table structure for escuelasnumeros
@@ -770,8 +755,6 @@ CREATE TABLE `escuelasnumeros`  (
 -- ----------------------------
 -- Records of escuelasnumeros
 -- ----------------------------
-INSERT INTO `escuelasnumeros` VALUES (3, '23', '2453', '34', '15EBH0164Y', 'JUDGFIUE76573');
-INSERT INTO `escuelasnumeros` VALUES (4, '4', '257', '35', '15EBH0164Y', 'HFIEUFHJ7HFUEB76');
 
 -- ----------------------------
 -- Table structure for especializacion
@@ -941,15 +924,11 @@ CREATE TABLE `madre`  (
   CONSTRAINT `fk_NivelEscolarMadre_idNivelEscolar` FOREIGN KEY (`idNivelEscolar`) REFERENCES `nivelescolar` (`idNivelEscolar`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `fk_OcupacionMadre_idOcupacion` FOREIGN KEY (`idOcupacion`) REFERENCES `ocupacion` (`idOcupacion`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `fk_ParentescoMadre_idParentesco` FOREIGN KEY (`idParentesco`) REFERENCES `parentesco` (`idParentesco`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 47 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 50 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of madre
 -- ----------------------------
-INSERT INTO `madre` VALUES (16, 'DULCE CONCEPCION', 'MELENDEZ', 'CASTILLO', '5564053181', 'BJFHEHURHJKFBEH763', 'HSJGUWHRUW67828', 8, 3, 6, '201823777');
-INSERT INTO `madre` VALUES (22, 'VIRGINIA', 'ROBLES', 'VIDAL', '55447272626', 'VVDHJIUEIUYUYUU636', 'VASTWRETYSBBSU3635', 2, 2, 6, '201823320');
-INSERT INTO `madre` VALUES (42, 'REYNA', 'MONTIEL', 'FLORES', '3456789980', 'VARWUNSRY66HDY2G', 'REYA98SNHBWHJ1', 2, 3, 6, '201823192');
-INSERT INTO `madre` VALUES (47, 'REYNA', 'MARTINEZ', '', '', 'VARWUNSRY66HDY2GV2', 'REYA98SNHBWHJ12WS2', 8, 3, 6, '2018230872');
 
 -- ----------------------------
 -- Table structure for maestria
@@ -1221,15 +1200,11 @@ CREATE TABLE `padre`  (
   CONSTRAINT `fk_NivelEscolar_idNivelEscolar` FOREIGN KEY (`idNivelEscolar`) REFERENCES `nivelescolar` (`idNivelEscolar`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `fk_Ocupacion_idOcupacion` FOREIGN KEY (`idOcupacion`) REFERENCES `ocupacion` (`idOcupacion`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `fk_Parentesco_idParentesco` FOREIGN KEY (`idParentesco`) REFERENCES `parentesco` (`idParentesco`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 44 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 47 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of padre
 -- ----------------------------
-INSERT INTO `padre` VALUES (19, 'JUAN', 'MATEOS', 'LOPEZ', '5563488773', 'UEFGCHFHKJ73647682', 'GFHGFGYW6736476728', 6, 2, 7, '201823777');
-INSERT INTO `padre` VALUES (21, 'IGNACIO', 'VALDEZ', 'PEREZ', '55447466', 'UEFGCHFHKJ73647100', 'GDGEYYUUW636652442', 8, 3, 7, '201823320');
-INSERT INTO `padre` VALUES (39, 'MARTIN', 'VAZQUEZ', 'FLORES', '3456728901', 'VAMXKOUBBAYYHVGW', 'MRTINYYWBI1913', 8, 3, 7, '201823192');
-INSERT INTO `padre` VALUES (44, 'JOSE', 'JAVIER', '', '', 'VAMXKOUBBAYYHVGWY3', 'MRTINYYWBI19111112', 6, 2, 7, '2018230872');
 
 -- ----------------------------
 -- Table structure for parentesco
@@ -1452,10 +1427,10 @@ INSERT INTO `sexo` VALUES (2, 'MUJER');
 DROP TABLE IF EXISTS `tiposegurosocial`;
 CREATE TABLE `tiposegurosocial`  (
   `idSeguroSocial` int NOT NULL AUTO_INCREMENT,
-  `tipoSeguroSocial` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `tipoSeguroSocial` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`idSeguroSocial`) USING BTREE,
   UNIQUE INDEX `key_TipoSeguroSocial_desTipoSeguroSocial`(`tipoSeguroSocial`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tiposegurosocial
